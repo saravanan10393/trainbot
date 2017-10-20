@@ -38,7 +38,7 @@ router.post('/traintime', function(req, res, next) {
 
   res.json({
     speech : "Train timings for "+parameters.tolocation,
-    displayText : nearestTrainTime.join("/n"),
+    displayText : nearestTrainTime.join(" "),
     data : {},
     contextOut: [],
     source : "",
