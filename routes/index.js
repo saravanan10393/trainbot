@@ -41,7 +41,7 @@ router.post('/traintime', function(req, res, next) {
     displayText : nearestTrainTime.join(" "),
     data : {},
     contextOut: [],
-    source : "",
+    source : req.body.result.source,
     followupEvent: {}
   })
 
