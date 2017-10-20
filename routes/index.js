@@ -20,7 +20,7 @@ router.post('/traintime', function(req, res, next) {
       hour = hour + 1;
     }
     min = (60 - min) > 0 ? min : -(60 - min);
-    return parseFloat(hour+"."+min)
+    return parseFloat(hour+"."+min).toFixed(2)
   }
 
   var now = getFlaotingTime();
