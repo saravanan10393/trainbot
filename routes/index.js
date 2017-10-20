@@ -29,17 +29,20 @@ router.post('/traintime', function(req, res, next) {
   console.log("train direction ", now)
   //console.log("train timings ", trainTimings.timings[trainDirection][parameters.fromlocation])
   trainTimings.timings[trainDirection][parameters.fromlocation].forEach( (time, index) => {
-    if(time < now) return;
+    if(parseFloat(time).toFixed(2)*1 < now) return;
     if(nearestTrainTime.length > 5) return;
-    console.log(time +" < "+now)
+    console.log(time +" > "+now, parseFloat(time).toFixed(2)*1 < now)
     var toStationTime = trainTimings.timings[trainDirection][parameters.tolocation][index]
     nearestTrainTime.push(`starts at ${time} and ends by ${toStationTime}`)
   });   
 
   res.json({
-    type : 2,
-    title : "List of nearest trains",
-    replies: nearestTrainTime
+    speech : "Train timings for "+parameters.tolocation,
+    displayText : nearestTrainTime.join("/n"),
+    data : {},
+    contextOut: [],
+    source : "",
+    followupEvent: {}
   })
 
 });
