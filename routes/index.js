@@ -10,6 +10,7 @@ router.post('/traintime', function(req, res, next) {
   }
 
   var parameters = req.body.result.parameters;
+  console.log("Parameters ", parameters);
   var trainDirection = trainTimings.stations[parameters.fromlocation] < trainTimings.stations[parameters.tolocation] ? "TowardsBeach" : "TowardsVelacherry";
 
   function getFlaotingTime(timeZoneHour = 5, timeZoneMin = 30){
